@@ -16,15 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/home', 'AgencyController@index')->name('admin.home');
+
+//AGENCY
+Route::get('/', 'AgencyController@index')->name('admin.home');
 Route::get('/admin/create', 'AgencyController@create')->name('admin.create');
 Route::post('/admin/create', 'AgencyController@store')->name('admin.store');
 
-Auth::routes();
+//EMPLOYEE
+Route::get('/employee', 'EmployeeController@index')->name('index.employee');
+Route::get('/employee/create', 'EmployeeController@create')->name('employee.create');
+Route::post('/employee/create', 'EmployeeController@store')->name('employee.store');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

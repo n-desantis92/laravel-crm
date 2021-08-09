@@ -10,7 +10,7 @@
                     <a href="{{route('admin.home')}}">Aziende</a>
                 </li>
                 <li>
-                    <a href="{{route('admin.home')}}">Dipendenti</a>
+                    <a href="{{route('employee.create')}}">Dipendenti</a>
                 </li>
             </ul>
         </nav>

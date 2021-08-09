@@ -15,6 +15,7 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('agency_id')->constrained();
             $table->string('name_emp',50);
             $table->string('last_name',50);
             $table->string('email_emp',50)->unique();
