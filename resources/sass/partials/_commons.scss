@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    width: 100%;
+}
+main {
+    width: 100%;
+}
+
+.container-app {
+    width: 100%;
+}
+@mixin textShadow {
+    color: #fff;
+    text-shadow: 1px 1px 1px $shadow;
+    margin-bottom: 30px;
+}

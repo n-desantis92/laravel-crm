@@ -1,0 +1,21 @@
+.container-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    padding: 50px;
+    background-color: $base2;
+    h2 {
+        @include textShadow;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        background-color: $base;
+        color: $secondary-1;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px 1px $shadow;
+    }
+}
