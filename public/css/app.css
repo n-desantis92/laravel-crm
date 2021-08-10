@@ -10099,11 +10099,12 @@ main {
 
 .content-agency {
   width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 50px;
   background-color: #98f0ff;
+  padding: 50px;
 }
 .content-agency h2 {
   color: #fff;
@@ -10166,15 +10167,25 @@ main {
 .content-agency .list-agency .azienda .editing a {
   font-size: 20px;
   text-shadow: 1px 1px 1px rgba(6, 25, 63, 0.5);
+  margin-right: 10px;
 }
 .content-agency .list-agency .azienda .editing a:hover {
   text-shadow: 2px 2px 3px rgba(6, 25, 63, 0.5);
 }
-.content-agency .list-agency .azienda .editing a .fa-trash-alt {
-  color: red;
-}
 .content-agency .list-agency .azienda .editing a .fa-edit {
   color: green;
+}
+.content-agency .list-agency .azienda .editing button {
+  border: 0px;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px rgba(6, 25, 63, 0.5);
+  margin-right: 10px;
+}
+.content-agency .list-agency .azienda .editing button:hover {
+  text-shadow: 2px 2px 3px rgba(6, 25, 63, 0.5);
+}
+.content-agency .list-agency .azienda .editing button .fa-trash-alt {
+  color: red;
 }
 .content-agency .content-page {
   display: flex;
@@ -10198,4 +10209,8 @@ main {
   text-align: center;
   margin-right: 5px;
   cursor: pointer;
+}
+
+.azienda .foto {
+  max-width: 200px;
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use App\Agency;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Agency;
 
 
 
@@ -86,9 +86,9 @@ class AgencyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Agency $agency)
     {
-        //
+        return view('admin.edit', ['agency' => $agency]);
     }
 
     /**
@@ -98,9 +98,12 @@ class AgencyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Agency $agency)
     {
-        //
+        $data = $request->all();
+        $agency->update($data);
+
+        return redirect()->route('admin.home');
     }
 
     /**
@@ -109,8 +112,9 @@ class AgencyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Agency $agency)
     {
-        //
+        $agency->delete();
+        return redirect()->route('admin.home')->with('message', 'l\'azienda è stata eliminata con successo!');
     }
 }

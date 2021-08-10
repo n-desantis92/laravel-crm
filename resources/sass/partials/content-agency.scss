@@ -1,11 +1,12 @@
 .content-agency {
 
     width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 50px;
     background-color: $base2;
+    padding: 50px;
     h2 {
         @include textShadow;
     }
@@ -68,16 +69,29 @@
                 a {
                     font-size: $mediumsmall;
                     text-shadow: 1px 1px 1px $shadow;
+                    margin-right: 10px;
                     &:hover {
                         text-shadow: 2px 2px 3px $shadow;
     
                     }
 
-                    .fa-trash-alt {
-                        color: red;
-                    }
+
                     .fa-edit {
                         color: green;
+                    }
+                }
+
+                button {
+                    border: 0px;
+                    font-size: $mediumsmall;
+                    text-shadow: 1px 1px 1px $shadow;
+                    margin-right: 10px;
+                    &:hover {
+                        text-shadow: 2px 2px 3px $shadow;
+    
+                    }
+                    .fa-trash-alt {
+                        color: red;
                     }
                 }
             }

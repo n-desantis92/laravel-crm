@@ -4,6 +4,10 @@
     aggiungi dipendente
 @endsection
 
+@section('header')
+    @extends('layouts.header')
+@endsection
+
 @section('content')
 <div class="container-form">
     <h2>inserisci il nuovo dipendente</h2>

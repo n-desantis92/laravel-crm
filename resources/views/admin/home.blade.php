@@ -3,36 +3,15 @@
     home-crm
 @endsection
 @section('header')
-    <div class="nav-bar">
-        <nav>
-            <ul class="menu">
-                <li>
-                    <a href="{{route('admin.home')}}">Aziende</a>
-                </li>
-                <li>
-                    <a href="{{route('employee.create')}}">Dipendenti</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="login">
-            @if (Route::has('login'))
-                <div class="login-link">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div>
-    </div>
+    @extends('layouts.header')
 @endsection
 @section('content')
     <div class="content-agency">
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
         <h2>Aziende</h2>
         <ul class="list-agency">
             <div class="insert">
@@ -55,9 +34,14 @@
                     </div>
                     <div class="editing">
                         <a href="#"><i class="fas fa-user-tie"></i></a>
-                        <a href="#"><i class="far fa-edit"></i></a>
-                        <a href="#"><i class="far fa-trash-alt"></i></a>
+                        <a href="{{route('agency.edit', ['agency' => $agency->id ])}}"><i class="far fa-edit"></i></a>
+                        <form action="{{route('agency.destroy', ['agency' => $agency->id ])}}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare l\'azienda?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delet"><i class="far fa-trash-alt"></i></button>
+                        </form>
                     </div>                
+
                 </li>
             @endforeach
         </ul>

@@ -2,43 +2,48 @@
 @section('page_title')
     home-crm
 @endsection
-@section('header')
-    <div class="nav-bar">
-        <nav>
-            <ul class="menu">
-                <li>
-                    <a href="{{route('admin.home')}}">Aziende</a>
-                </li>
-                <li>
-                    <a href="{{route('employee.create')}}">Dipendenti</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="login">
-            @if (Route::has('login'))
-                <div class="login-link">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div>
-    </div>
+@section('header')
+    @extends('layouts.header')
 @endsection
+
 @section('content')
     <div class="content-agency">
         <h2>Dipendenti</h2>
+        <ul class="list-agency">
+            <div class="insert">
+                <a href="{{route('employee.create')}}"><i class="far fa-plus-square"></i></a>
+            </div>
 
+            @foreach ($employees as $employee)
+
+                <li class="azienda">
+                    <div>
+                        <h3 class="nome-dipendente">{{$employee->name_emp}} {{$employee->last_name}}</h3>
+                        <img class="foto" src="{{asset('storage/' . $employee->photo_emp)}}" alt="foto dipendente">
+                    </div>
+                    <div class="dati">
+                        <p><span>Email:</span> {{$employee->email_emp}}</p>
+                        <p><span>Telefono:</span> {{$employee->phone_emp}}</p>
+                        <p><span>Città:</span> {{$employee->city_emp}}</p>
+                        <p><span>Indirizzo:</span> {{$employee->address_emp}}</p>
+                        <p><span>Azienda:</span></p>
+                    </div>
+                    <div class="editing">
+                        <a href="#"><i class="far fa-building"></i></a>
+                        <a href="#"><i class="far fa-edit"></i></a>
+                        <a href="#"><i class="far fa-trash-alt"></i></a>
+                    </div>                
+                </li>
+            @endforeach
+        </ul>
         <div class="content-page">
             <ul class="list-page">
                 <span>Page :</span>
 
+                @for ($i = 1; $i <= $employees->lastPage(); $i++)
+                    <li class="page">{{$i}}</li>
+                @endfor
             </ul>
         </div>
     </div>

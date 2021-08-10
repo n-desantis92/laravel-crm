@@ -29,8 +29,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = DB::table('employees')->paginate(10);
-        return view('admin.employee.show', compact('employee'));
+        $agencies = Agency::all();
+        $employees = DB::table('employees')->paginate(10);
+        return view('admin.employee.show', compact('employees'));
     }
 
     /**

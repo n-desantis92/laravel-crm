@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agency extends Model
 {   
     //MASS ASSIGNEMENT
-    protected $guarded=[];
+    protected $guarded = [];
 
     //RELAZIONI
     public function user()
