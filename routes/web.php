@@ -30,6 +30,7 @@ Route::put('/agency/{agency}/up', 'AgencyController@update')->name('agency.updat
 Route::get('/employee', 'EmployeeController@index')->name('index.employee');
 Route::get('/employee/create', 'EmployeeController@create')->name('employee.create');
 Route::post('/employee/create', 'EmployeeController@store')->name('employee.store');
+Route::get('/employee/{employee}/edit', 'EmployeeController@edit')->name('employee.edit');
 
 
 

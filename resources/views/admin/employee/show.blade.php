@@ -31,7 +31,7 @@
                     </div>
                     <div class="editing">
                         <a href="#"><i class="far fa-building"></i></a>
-                        <a href="#"><i class="far fa-edit"></i></a>
+                        <a href="{{route('employee.edit', ['employee' => $employee->id ])}}"><i class="far fa-edit"></i></a>
                         <a href="#"><i class="far fa-trash-alt"></i></a>
                     </div>                
                 </li>

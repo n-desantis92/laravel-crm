@@ -86,9 +86,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        //
+        $agencies = Agency::all();
+        return view('admin.employee.edit', compact('employee','agencies'));
     }
 
     /**
