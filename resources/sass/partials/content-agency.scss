@@ -75,9 +75,12 @@
     
                     }
 
+                    i {
+                        padding: 5px;
+                        &.fa-edit {
+                            color: green;
+                        }
 
-                    .fa-edit {
-                        color: green;
                     }
                 }
 
@@ -92,6 +95,8 @@
                     }
                     .fa-trash-alt {
                         color: red;
+                        padding: 5px;
+                        background-color: #fff;
                     }
                 }
             }

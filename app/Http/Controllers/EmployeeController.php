@@ -31,7 +31,7 @@ class EmployeeController extends Controller
     {
         $agencies = Agency::all();
         $employees = DB::table('employees')->paginate(10);
-        return view('admin.employee.show', compact('employees'));
+        return view('admin.employee.show', compact('employees', 'agencies'));
     }
 
     /**
@@ -133,8 +133,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('index.employee')->with('message', 'il dipendente è stato eliminato con successo!');
     }
 }

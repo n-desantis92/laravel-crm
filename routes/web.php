@@ -25,6 +25,7 @@ Route::post('/admin/create', 'AgencyController@store')->name('admin.store');
 Route::get('/agency/{agency}/edit', 'AgencyController@edit')->name('agency.edit');
 Route::delete('/agency/{agency}', 'AgencyController@destroy')->name('agency.destroy');
 Route::put('/agency/{agency}/up', 'AgencyController@update')->name('agency.update');
+Route::get('/agency/{agency}/show', 'AgencyController@show')->name('agency.show');
 
 //EMPLOYEE
 Route::get('/employee', 'EmployeeController@index')->name('index.employee');
@@ -32,3 +33,4 @@ Route::get('/employee/create', 'EmployeeController@create')->name('employee.crea
 Route::post('/employee/create', 'EmployeeController@store')->name('employee.store');
 Route::get('/employee/{employee}/edit', 'EmployeeController@edit')->name('employee.edit');
 Route::put('/employee/{employee}/put', 'EmployeeController@update')->name('employee.update');
+Route::delete('/employee/{employee}', 'EmployeeController@destroy')->name('employee.destroy');

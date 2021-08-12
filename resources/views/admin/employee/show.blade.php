@@ -27,13 +27,16 @@
                         <p><span>Telefono:</span> {{$employee->phone_emp}}</p>
                         <p><span>Città:</span> {{$employee->city_emp}}</p>
                         <p><span>Indirizzo:</span> {{$employee->address_emp}}</p>
-                        <p><span>Azienda:</span></p>
+                        <p><span>Azienda: {{($agencies[$employee->agency_id])->name_agency}}</span></p>
                     </div>
                     <div class="editing">
-                        <a href="#"><i class="far fa-building"></i></a>
+                        <a href="{{route('agency.show', ['agency' => ($agencies[$employee->agency_id]) ])}}"><i class="far fa-building"></i></a>
                         <a href="{{route('employee.edit', ['employee' => $employee->id ])}}"><i class="far fa-edit"></i></a>
-                        <a href="#"><i class="far fa-trash-alt"></i></a>
-                    </div>                
+                        <form action="{{route('employee.destroy', ['employee' => $employee->id ])}}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare il dipendente?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delet"><i class="far fa-trash-alt"></i></button>
+                        </form>                    </div>                
                 </li>
             @endforeach
         </ul>
@@ -46,7 +49,11 @@
                 @endfor
             </ul>
         </div>
-    </div>
+        @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
     
 @endsection
 
