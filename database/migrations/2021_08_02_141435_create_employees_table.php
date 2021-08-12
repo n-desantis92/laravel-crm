@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->foreignId('agency_id')->constrained();
             $table->string('name_emp',50);
             $table->string('last_name',50);
-            $table->string('email_emp',50)->unique();
+            $table->string('email_emp',50);
             $table->string('phone_emp',13);
             $table->string('address_emp',100);
             $table->string('city_emp',20);

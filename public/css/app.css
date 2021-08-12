@@ -10020,6 +10020,12 @@ main {
   width: 100%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .container-form {
   width: 100%;
   display: flex;
@@ -10041,6 +10047,11 @@ main {
   padding: 50px;
   border-radius: 20px;
   box-shadow: 1px 1px 1px 1px rgba(6, 25, 63, 0.5);
+}
+.container-form .form img {
+  max-width: 200px;
+  margin: 10px;
+  box-shadow: 2px 2px 2px rgba(6, 25, 63, 0.5);
 }
 
 .nav-bar {

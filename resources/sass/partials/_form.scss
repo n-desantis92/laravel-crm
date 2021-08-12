@@ -17,5 +17,11 @@
         padding: 50px;
         border-radius: 20px;
         box-shadow: 1px 1px 1px 1px $shadow;
+
+        img {
+            max-width: 200px;
+            margin: 10px;
+            @include boxshadow;
+        }
     }
 }

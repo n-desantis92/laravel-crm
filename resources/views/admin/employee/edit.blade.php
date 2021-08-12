@@ -12,7 +12,7 @@
 <div class="container-form">
     <h2>modifica {{$employee->name_emp}}</h2>
     <div class="form">
-        <form class="mt-3" action="{{route('employee.store')}}" method="post" enctype="multipart/form-data">
+        <form class="mt-3" action="{{route('employee.update', ['employee' => $employee->id])}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
                 <div class="form-group">
@@ -53,6 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label for="photo_emp">foto</label>
+                    <img src="{{asset('storage/' . $employee->photo_emp)}}" alt="foto profilo">
                     <input type="file" class="d-block" id="photo_emp" name="photo_emp" value="{{$employee->photo_emp}}">
                 </div>
                 <div class="mt-3">
@@ -61,4 +62,9 @@
             </form>
         </div>
     </div>
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 @endsection

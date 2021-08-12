@@ -31,12 +31,4 @@ Route::get('/employee', 'EmployeeController@index')->name('index.employee');
 Route::get('/employee/create', 'EmployeeController@create')->name('employee.create');
 Route::post('/employee/create', 'EmployeeController@store')->name('employee.store');
 Route::get('/employee/{employee}/edit', 'EmployeeController@edit')->name('employee.edit');
-
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::put('/employee/{employee}/put', 'EmployeeController@update')->name('employee.update');

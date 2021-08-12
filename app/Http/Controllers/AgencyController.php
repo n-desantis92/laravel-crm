@@ -17,7 +17,7 @@ class AgencyController extends Controller
         'name_agency' => 'required|string|max:50',
         'email_agency' => 'required|string|max:50',
         'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4000',
-        'p_iva' => 'required|numeric|min:11|max:11',
+        'p_iva' => 'required|string|min:11|max:11',
         'address_agency' => 'required|string|max:50',
         'phone_agency' => 'required|string',
         'city_agency' => 'required|string|max:50',
@@ -53,17 +53,22 @@ class AgencyController extends Controller
      */
     public function store(Request $request)
     {
-
-        //VALIDATION
-        $validation = $this->validation;
-
-        
         $data = $request->all();
+        //trasformo la partita iva da stringa a numero
+        if(is_string($data['p_iva'])){
+            $data['p_iva'] = intval($data['p_iva']);
+        }
+
+        $validation = $this->validation;
+        // validation
+        $request->validate($validation);
+        
         if (isset($data['logo'])) {
             $data['logo'] = Storage::disk('public')->put('images', $data['logo']);
+        }else {
+            $data['logo'] = 'images/default.jpeg';
         }
         $agencyNew  = Agency::create($data);
-        $agencyNew->save();
 
         return redirect()->route('admin.home');       
 
@@ -100,7 +105,17 @@ class AgencyController extends Controller
      */
     public function update(Request $request, Agency $agency)
     {
+
+        $validation = $this->validation;
+
         $data = $request->all();
+
+        if (isset($data['logo'])) {
+            $data['logo'] = Storage::disk('public')->put('images', $data['logo']);
+        }else {
+            $data['logo'] = $agency['logo'];
+        }
+
         $agency->update($data);
 
         return redirect()->route('admin.home');

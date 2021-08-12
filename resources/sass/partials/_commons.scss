@@ -18,3 +18,13 @@ main {
     text-shadow: 1px 1px 1px $shadow;
     margin-bottom: 30px;
 }
+
+@mixin boxshadow {
+    box-shadow: 2px 2px 2px $shadow;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}

@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group">
                     <label for="p_iva">partita IVA</label>
-                    <input type="text" class="form-control"  name="p_iva" id="p_iva" value="{{old('p_iva')}}" placeholder="Inserisci la partita IVA" required>
+                    <input type="text" max="11" class="form-control"  name="p_iva" id="p_iva" value="{{old('p_iva')}}" placeholder="Inserisci la partita IVA" required>
                 </div>
                 <div class="form-group">
                     <label for="phone_agency">numero di telefono</label>

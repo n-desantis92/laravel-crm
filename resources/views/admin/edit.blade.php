@@ -41,8 +41,8 @@
                 </div>
                 <div class="form-group">
                     <label for="logo">logo</label>
-                    <img src="{{asset('storage/' . $agency->logo)}}" alt="logo">
-                    <input type="file" class="d-block" id="logo" name="logo" value="{{$agency->logo}}">
+                    <img src="{{asset('storage/' . $agency->logo)}}" alt="logo azienda">
+                    <input type="file" class="d-block" id="logo" name="logo">
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">Modifica azienda</button>

@@ -59,13 +59,15 @@ class EmployeeController extends Controller
 
         $data = $request->all();
 
-
+        //controllo se è stata inserita un'img o altrimenti metto un default
         if (isset($data['photo_emp'])) {
             $data['photo_emp'] = Storage::disk('public')->put('images', $data['photo_emp']);
+        } else {
+            $data['photo_emp'] = 'images/default.jpg';
         }
-        $employeeNew  = Employee::create($data);
-        $employeeNew->save();
 
+        $employeeNew  = Employee::create($data);
+        // attach
         return redirect()->route('index.employee');
     }
 
@@ -99,9 +101,30 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        
+        //prendo la validazione dei dati in entrata
+        $validation = $this->validation;
+
+        //faccio la validazione della $request
+        $request->validate($validation);
+
+        //salvo tutti i dati in una variabile una volta controllati
+        $data = $request->all();
+
+        //costruisco il percorso per inserire correttamente l'img
+        if (isset($data['photo_emp'])) {
+            $data['photo_emp'] = Storage::disk('public')->put('images', $data['photo_emp']);
+        } else {
+            $data['photo_emp'] = $employee['photo_emp'];
+        }
+
+
+        //salvo l'employee
+        $employee->update($data);
+
+        return redirect()->route('index.employee')->with('message', 'la modifica è avvenuta con successo!');
     }
 
     /**
