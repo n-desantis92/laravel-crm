@@ -1,5 +1,4 @@
 
-<
 @extends('layouts.base')
 @section('page_title')
     home-crm
@@ -43,13 +42,7 @@
             @endforeach
         </ul>
         <div class="content-page">
-            <ul class="list-page">
-                <span>Page :</span>
-
-                @for ($i = 1; $i <= $employees->lastPage(); $i++)
-                    <li class="page">{{$i}}</li>
-                @endfor
-            </ul>
+            {{$employees->links()}}
         </div>
         @if (session('message'))
         <div class="alert alert-success">
