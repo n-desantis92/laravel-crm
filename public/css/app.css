@@ -10037,6 +10037,14 @@ input::-webkit-inner-spin-button {
   background-color: #63fd3d;
 }
 
+.blue {
+  background-color: #007fff !important;
+}
+
+.azzurro {
+  background-color: #98f0ff !important;
+}
+
 .container-form {
   width: 100%;
   display: flex;

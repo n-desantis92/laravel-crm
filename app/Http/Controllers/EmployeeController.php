@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Agency;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Employee;
 use Illuminate\Support\Facades\Storage;
 
@@ -30,7 +29,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $agencies = Agency::all();
-        $employees = DB::table('employees')->paginate(10);
+        $employees = Employee::paginate(10);
         return view('admin.employee.show', compact('employees', 'agencies'));
     }
 
@@ -67,7 +66,6 @@ class EmployeeController extends Controller
         }
 
         $employeeNew  = Employee::create($data);
-        // attach
         return redirect()->route('index.employee');
     }
 

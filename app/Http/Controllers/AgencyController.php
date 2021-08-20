@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Agency;
-
-
+use App\Employee;
 
 class AgencyController extends Controller
 {
@@ -30,9 +29,17 @@ class AgencyController extends Controller
      */
     public function index()
     {   
-        $agencies = DB::table('agencies')->paginate(10);
+        $user = Auth::user();
+        if ($user) {
+
+            $agencies = DB::table('agencies')->paginate(10);
         
-        return view('admin.home', compact('agencies'));
+            return view('admin.home', compact('agencies'));
+        }else {
+            echo ('devi registrarti');
+            header( "refresh:2;url=/home" );
+        }
+
     }
 
     /**

@@ -26,8 +26,46 @@
                             
             </div>
         </div>
-        <div class="content-employees">
-            dipendenti
+        <div id="ass" class="content-employees">
+            <ul>
+                <li v-for="(associato , i) in associati" >
+                    <p>@{{associato.nome}}</p>
+                </li>
+            </ul>
         </div>
     </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#ass',
+        data: {
+            agency: 1,
+            associati: [],
+        },
+        mounted() {
+            let allEmployee = function() {
+
+                axios.get('/api/employee/all' , {
+                    
+                    params: {
+                        id: this.agency
+                    }
+                })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log('ciao');
+                })
+            }
+
+        },
+        methods: {
+
+        },
+
+    })
+</script>
 @endsection

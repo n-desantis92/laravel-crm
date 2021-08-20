@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\EmployeeApiController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guest.index'); 
 });
+
+Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //AGENCY
@@ -28,7 +33,7 @@ Route::put('/agency/{agency}/up', 'AgencyController@update')->name('agency.updat
 Route::get('/agency/{agency}/show', 'AgencyController@show')->name('agency.show');
 
 //EMPLOYEE
-Route::get('/employee', 'EmployeeController@index')->name('index.employee');
+Route::get('/employee/index', 'EmployeeController@index')->name('index.employee');
 Route::get('/employee/create', 'EmployeeController@create')->name('employee.create');
 Route::post('/employee/create', 'EmployeeController@store')->name('employee.store');
 Route::get('/employee/{employee}/edit', 'EmployeeController@edit')->name('employee.edit');

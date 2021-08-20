@@ -1842,10 +1842,6 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./script/vanilla.js */ "./resources/js/script/vanilla.js");
-
-__webpack_require__(/*! ./script/script.js */ "./resources/js/script/script.js");
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1889,29 +1885,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/script/script.js":
-/*!***************************************!*\
-  !*** ./resources/js/script/script.js ***!
-  \***************************************/
-/***/ (() => {
-
-new Vue({
-  el: '#app',
-  data: {}
-});
-
-/***/ }),
-
-/***/ "./resources/js/script/vanilla.js":
-/*!****************************************!*\
-  !*** ./resources/js/script/vanilla.js ***!
-  \****************************************/
-/***/ (() => {
-
-
 
 /***/ }),
 
