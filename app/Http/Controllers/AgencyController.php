@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Agency;
-use App\Employee;
 
 class AgencyController extends Controller
 {
@@ -32,11 +29,11 @@ class AgencyController extends Controller
         $user = Auth::user();
         if ($user) {
 
-            $agencies = DB::table('agencies')->paginate(10);
+            $agencies = Agency::paginate(10);
         
             return view('admin.home', compact('agencies'));
         }else {
-            echo ('devi registrarti');
+            echo ('<h1>devi registrarti</h1>');
             header( "refresh:2;url=/home" );
         }
 

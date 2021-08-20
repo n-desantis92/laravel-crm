@@ -46,14 +46,9 @@
             @endforeach
         </ul>
         <div class="content-page">
-            <ul class="list-page">
-                <span>Page :</span>
-
-                @for ($i = 1; $i <= $agencies->lastPage(); $i++)
-                    <li class="page">{{$i}}</li>
-                @endfor
-            </ul>
+            {{$agencies->links()}}
         </div>
+
     </div>
     
 @endsection
