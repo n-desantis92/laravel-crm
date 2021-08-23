@@ -32,7 +32,11 @@ class AgencyController extends Controller
             $agencies = Agency::paginate(10);
         
             return view('admin.home', compact('agencies'));
-        }else {
+        }else if($user == false) {
+            return view('auth.login');
+
+        }
+        else {
             echo ('<h1>devi registrarti</h1>');
             header( "refresh:2;url=/home" );
         }

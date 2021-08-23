@@ -10249,3 +10249,8 @@ input::-webkit-inner-spin-button {
 .azienda .foto {
   max-width: 200px;
 }
+
+.table-bost {
+  background-color: #fff;
+  margin-top: 50px;
+}

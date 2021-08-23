@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //API
-Route::get('/employee/all', 'Api\EmployeeController@employeeAll');
-Route::get('/employee/{id}', 'Api\EmployeeController@getEmployee');
+Route::get('/employee-all', 'Api\EmployeeController@employeeAll');
+// Route::get('/employee/{id}', 'Api\EmployeeController@getEmployee');
 

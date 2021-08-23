@@ -33,7 +33,7 @@
                         <p><span>Indirizzo:</span> {{$agency->address_agency}}</p>
                     </div>
                     <div class="editing">
-                        <a href="#"><i class="fas fa-user-tie"></i></a>
+                        <a href="{{route('agency.show', ['agency' => $agency->id ])}}"><i class="fas fa-user-tie"></i></a>
                         <a href="{{route('agency.edit', ['agency' => $agency->id ])}}"><i class="far fa-edit"></i></a>
                         <form action="{{route('agency.destroy', ['agency' => $agency->id ])}}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare l\'azienda?');">
                             @csrf

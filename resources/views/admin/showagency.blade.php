@@ -27,17 +27,32 @@
             </div>
         </div>
         <div id="ass" class="content-employees">
-            <ul>
-                <li v-for="(associato , i) in associati" >
-                    <p>@{{associato.nome}}</p>
-                </li>
-            </ul>
+            <table class="table table-striped table-bordered table-bost" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Last name</th>
+                        <th>E-mail</th>
+                        <th>Phone</th>
+                        <th>city</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(associato , i) in associati">
+                        <td>@{{associato.name_emp}}</td>
+                        <td>@{{associato.last_name}}</td>
+                        <td>@{{associato.email_emp}}</td>
+                        <td>@{{associato.phone_emp}}</td>
+                        <td>@{{associato.city_emp}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
+
     var app = new Vue({
         el: '#ass',
         data: {
@@ -45,25 +60,24 @@
             associati: [],
         },
         mounted() {
-            let allEmployee = function() {
+            this.allemployee();
 
-                axios.get('/api/employee/all' , {
+        },
+        methods: {
+            allemployee() {
+
+                axios.get('/api/employee-all' , {
                     
                     params: {
                         id: this.agency
                     }
                 })
                 .then((response) => {
-                    console.log(response);
+                    this.associati = response.data;
+                    console.log(response.data);
                 })
-                .catch(function (error) {
-                    console.log('ciao');
-                })
+                console.log(this.associati);
             }
-
-        },
-        methods: {
-
         },
 
     })
