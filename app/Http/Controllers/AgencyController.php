@@ -63,6 +63,9 @@ class AgencyController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data['name_agency'] = ucfirst($data['name_agency']);
+        $data['city_agency'] = ucfirst($data['city_agency']);
+        dd($data);
         //trasformo la partita iva da stringa a numero
         if(is_string($data['p_iva'])){
             $data['p_iva'] = intval($data['p_iva']);
@@ -79,7 +82,7 @@ class AgencyController extends Controller
         }
         $agencyNew  = Agency::create($data);
 
-        return redirect()->route('admin.home');       
+        return redirect()->route('admin.home')->with('success', 'l\'azienda è stata inserita con successo!');       
 
     }
 
@@ -129,6 +132,9 @@ class AgencyController extends Controller
         $validation = $this->validation;
 
         $data = $request->all();
+        $data['name_agency'] = ucfirst($data['name_agency']);
+        $data['city_agency'] = ucfirst($data['city_agency']);
+        
 
         if (isset($data['logo'])) {
             $data['logo'] = Storage::disk('public')->put('images', $data['logo']);
@@ -138,7 +144,7 @@ class AgencyController extends Controller
 
         $agency->update($data);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.home')->with('success', 'l\'azienda è stata modificata con successo!');
     }
 
     /**
@@ -150,6 +156,6 @@ class AgencyController extends Controller
     public function destroy(Agency $agency)
     {
         $agency->delete();
-        return redirect()->route('admin.home')->with('message', 'l\'azienda è stata eliminata con successo!');
+        return redirect()->route('admin.home')->with('danger', 'l\'azienda è stata eliminata con successo!');
     }
 }

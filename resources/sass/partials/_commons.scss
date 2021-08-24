@@ -34,12 +34,23 @@ margin: 0;
     bottom: 20px;
     right: 20px;
     @include boxshadow();
+    
+    .fa-times-circle {
+        color: $base;
+    }
 } 
+.close {
+    display: none;
+}
 
 .alert-success {
     background-color: $success;
 }
 
+.alert-danger-my {
+    background-color: $danger;
+    color: $base;
+}
 //colori
 .blue {
     background-color: $base3!important;

@@ -57,6 +57,8 @@ class EmployeeController extends Controller
         $request->validate($validation);
 
         $data = $request->all();
+        $data['name_emp'] = ucfirst($data['name_emp']);
+        $data['city_emp'] = ucfirst($data['city_emp']);
 
         //controllo se è stata inserita un'img o altrimenti metto un default
         if (isset($data['photo_emp'])) {
@@ -66,7 +68,7 @@ class EmployeeController extends Controller
         }
 
         $employeeNew  = Employee::create($data);
-        return redirect()->route('index.employee');
+        return redirect()->route('index.employee')->with('message', 'il dipendente è stato aggiunto con successo!');
     }
 
     /**
@@ -110,6 +112,8 @@ class EmployeeController extends Controller
 
         //salvo tutti i dati in una variabile una volta controllati
         $data = $request->all();
+        $data['name_emp'] = ucfirst($data['name_emp']);
+        $data['city_emp'] = ucfirst($data['city_emp']);
 
         //costruisco il percorso per inserire correttamente l'img
         if (isset($data['photo_emp'])) {

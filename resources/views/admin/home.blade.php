@@ -48,7 +48,18 @@
         <div class="content-page">
             {{$agencies->links()}}
         </div>
-
+        @if (session('danger'))
+        <div class="alert alert-danger-my">
+            <button v-on:click="close"><i class="far fa-times-circle"></i></button>
+            {{ session('danger') }}
+        </div>
+        @endif
+        @if (session('success'))
+        <div  class="alert alert-success">
+            <i class="far fa-times-circle"></i>
+            {{ session('success') }}
+        </div>
+        @endif
     </div>
     
 @endsection

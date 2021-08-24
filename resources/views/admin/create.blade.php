@@ -10,16 +10,16 @@
 
 @section('content')
     <div class="container-form">
-        {{-- errori --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+    {{-- errori --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
         <h2>inserisci la nuova azienda</h2>
         <div class="form">
@@ -60,4 +60,5 @@
             </form>
         </div>
     </div>
+
 @endsection
