@@ -10246,11 +10246,14 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-.azienda .foto {
-  max-width: 200px;
+.content-employees .filter {
+  margin-top: 30px;
+}
+.content-employees .filter input:focus, .content-employees .filter select:focus {
+  outline: none;
 }
 
 .table-bost {
   background-color: #fff;
-  margin-top: 50px;
+  margin-top: 30px;
 }

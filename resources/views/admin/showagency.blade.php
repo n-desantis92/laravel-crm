@@ -27,6 +27,15 @@
             </div>
         </div>
         <div id="ass" class="content-employees">
+            <div class="filter">
+                <input type="text"  @keyup.13="allemployee" v-model="ricerca" placeholder="Cerca...">
+                <select v-on:change="allemployee" v-model="city">
+                    <option value="">city</option>
+                    @foreach ($city as $item)
+                        <option value="{{$item}}">{{$item}}</option>
+                    @endforeach
+                </select>
+            </div>
             <table class="table table-striped table-bordered table-bost" style="width:100%">
                 <thead>
                     <tr>
@@ -47,6 +56,9 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="page">
+
+            </div>
         </div>
     </div>
 
@@ -56,20 +68,32 @@
     var app = new Vue({
         el: '#ass',
         data: {
-            agency: 1,
+            agency: {{$agency->id}},
+            city: '',
+            page: 0,
+            ricerca: '',
             associati: [],
         },
         mounted() {
             this.allemployee();
+            console.log(this.ricerca);
 
         },
         methods: {
             allemployee() {
 
+                let serchquery = this.ricerca;
+                let sercity = this.city;
+                console.log(serchquery);
+                console.log(sercity);
+
                 axios.get('/api/employee-all' , {
                     
                     params: {
-                        id: this.agency
+                        id: this.agency,
+                        page: this.page,
+                        city: sercity,
+                        ricerca: serchquery,
                     }
                 })
                 .then((response) => {

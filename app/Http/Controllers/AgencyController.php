@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Agency;
+use App\Employee;
 
 class AgencyController extends Controller
 {
@@ -90,7 +91,18 @@ class AgencyController extends Controller
      */
     public function show(Agency $agency)
     {
-        return view('admin.showagency', compact('agency'));
+        $employees = Employee::all()->where('agency_id', $agency->id);
+
+        $city = [];
+        foreach ($employees as $key => $item) {
+
+            if (!(in_array($item->city_emp, $city))) {
+                
+                array_push ($city, $item->city_emp);
+            }
+        }
+
+        return view('admin.showagency', compact('agency','city'));
     }
 
     /**
