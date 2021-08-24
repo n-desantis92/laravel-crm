@@ -65,7 +65,6 @@ class AgencyController extends Controller
         $data = $request->all();
         $data['name_agency'] = ucfirst($data['name_agency']);
         $data['city_agency'] = ucfirst($data['city_agency']);
-        dd($data);
         //trasformo la partita iva da stringa a numero
         if(is_string($data['p_iva'])){
             $data['p_iva'] = intval($data['p_iva']);
@@ -155,7 +154,14 @@ class AgencyController extends Controller
      */
     public function destroy(Agency $agency)
     {
-        $agency->delete();
-        return redirect()->route('admin.home')->with('danger', 'l\'azienda è stata eliminata con successo!');
+        $emp = Employee::all()->where('agency_id', $agency->id);
+        if (count($emp)) {
+            return redirect()->route('admin.home')->with('danger', 'l\'azienda ha ancora dei dipendenti!');
+
+        }else {
+            $agency->delete();
+            return redirect()->route('admin.home')->with('danger', 'l\'azienda è stata eliminata con successo!');
+
+        }
     }
 }
