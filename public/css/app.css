@@ -10258,8 +10258,18 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
+.azienda {
+  display: flex;
+  justify-content: space-between;
+}
+.azienda .nome-azienda {
+  font-weight: bold;
+}
 .azienda img {
   width: 200px;
+}
+.azienda .dati span {
+  font-weight: bold;
 }
 
 .content-employees .filter {
@@ -10267,6 +10277,11 @@ input::-webkit-inner-spin-button {
 }
 .content-employees .filter input:focus, .content-employees .filter select:focus {
   outline: none;
+}
+.content-employees .cont-table {
+  max-height: 400px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .table-bost {
